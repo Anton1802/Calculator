@@ -13,8 +13,6 @@
         readonly: True
         focus: False
 
-
-
     GridLayout:
         cols: 4
         spacing: 3
@@ -101,6 +99,7 @@
             font_size: 50
             id: btn_history
             text: 'H'
+            on_release: root.show_history()
         Button:
             font_size: 50
             id: btn_procent

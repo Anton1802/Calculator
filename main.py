@@ -3,6 +3,11 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.config import Config
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.uix.scrollview import ScrollView
+
+
 Config.set('graphics', 'resizable', 0)
 Config.set('graphics', 'width', 400)
 Config.set('graphics', 'height', 500)
@@ -12,6 +17,7 @@ class Calculator(Widget):
 
     formula = ''
     result = 0
+    history = []
 
     def formula_add(self, text, visual=''):
         if visual != '':
@@ -23,6 +29,7 @@ class Calculator(Widget):
     def start_operation(self):
         try:
             self.result = eval(self.formula)
+            self.add_history(self.formula, self.result)
         except SyntaxError:
             self.input.text = "Error"
 
@@ -57,6 +64,18 @@ class Calculator(Widget):
         except IndexError:
             self.input.text = ""
             self.formula = ""
+
+    def add_history(self, formula, result):
+        self.history.append(f"{self.input.text}={self.result}")
+
+    def show_history(self):
+        scrollview = ScrollView(do_scroll_x=False, do_scroll_y=True)
+        content = Label(text="\n".join(self.history),
+                        font_size='20sp', size_hint_y=None)
+        scrollview.add_widget(content)
+        popup = Popup(title='History', content=scrollview,
+                      size=(400, 400), size_hint=(None, None))
+        popup.open()
 
 
 class CalculatorApp(App):
