@@ -9,8 +9,8 @@ from kivy.uix.scrollview import ScrollView
 
 
 Config.set('graphics', 'resizable', 0)
-Config.set('graphics', 'width', 400)
-Config.set('graphics', 'height', 500)
+Config.set('graphics', 'width', 720)
+Config.set('graphics', 'height', 1560)
 
 
 class Calculator(Widget):
