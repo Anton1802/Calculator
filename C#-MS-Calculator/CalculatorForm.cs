@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Globalization;
+using System.Numerics;
 
 namespace C__MS_Calculator
 {
@@ -27,17 +28,17 @@ namespace C__MS_Calculator
 
         private void MS_Button_Click(object sender, EventArgs e)
         {
-            calculator.memory = double.Parse(CalcOutputTextBox.Text);
+            calculator.memory = double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture);
         }
 
         private void MPlus_Button_Click(object sender, EventArgs e)
         {
-            calculator.memory += double.Parse(CalcOutputTextBox.Text);
+            calculator.memory += double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture);
         }
 
         private void MMinus_Button_Click(object sender, EventArgs e)
         {
-            calculator.memory -= double.Parse(CalcOutputTextBox.Text);
+            calculator.memory -= double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture);
         }
 
         private void Backspace_Button_Click(object sender, EventArgs e)
@@ -71,7 +72,7 @@ namespace C__MS_Calculator
 
         private void ChangeSign_Button_Click(object sender, EventArgs e)
         {
-            CalcOutputTextBox.Text = (double.Parse(CalcOutputTextBox.Text) * -1).ToString();
+            CalcOutputTextBox.Text = (double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture) * -1).ToString();
         }
 
         private void Sqrt_Button_Click(object sender, EventArgs e)
@@ -80,7 +81,7 @@ namespace C__MS_Calculator
 
             CalcAnswerTextBox.Text += "(√" + CalcOutputTextBox.Text + ")";
 
-            CalcOutputTextBox.Text = Math.Sqrt(double.Parse(CalcOutputTextBox.Text)).ToString();
+            CalcOutputTextBox.Text = Math.Sqrt(double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture)).ToString();
         }
 
         private void Digits_Buttons_Click(object sender, EventArgs e)
@@ -106,7 +107,7 @@ namespace C__MS_Calculator
                 calculator.ClearValues();
             }
 
-            calculator.AddValue(Operation_Enum.Divide, double.Parse(CalcOutputTextBox.Text));
+            calculator.AddValue(Operation_Enum.Divide, double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture));
 
             if (specialBtnPressed)
             {
@@ -127,7 +128,7 @@ namespace C__MS_Calculator
 
             CalcAnswerTextBox.Text += "(" + CalcOutputTextBox.Text + " / 100)";
 
-            CalcOutputTextBox.Text = (double.Parse(CalcOutputTextBox.Text) / 100).ToString();
+            CalcOutputTextBox.Text = (double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture) / 100).ToString();
         }
 
         private void Multiply_Button_Click(object sender, EventArgs e)
@@ -139,7 +140,7 @@ namespace C__MS_Calculator
                 calculator.ClearValues();
             }
 
-            calculator.AddValue(Operation_Enum.Multiply, double.Parse(CalcOutputTextBox.Text));
+            calculator.AddValue(Operation_Enum.Multiply, double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture));
 
             if (specialBtnPressed)
             {
@@ -160,7 +161,7 @@ namespace C__MS_Calculator
 
             CalcAnswerTextBox.Text += "(1 / " + CalcOutputTextBox.Text + ")";
 
-            CalcOutputTextBox.Text = (1 / double.Parse(CalcOutputTextBox.Text)).ToString();
+            CalcOutputTextBox.Text = (1 / double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture)).ToString();
         }
 
         private void Minus_Button_Click(object sender, EventArgs e)
@@ -172,7 +173,7 @@ namespace C__MS_Calculator
                 calculator.ClearValues();
             }
 
-            calculator.AddValue(Operation_Enum.Subtract, double.Parse(CalcOutputTextBox.Text));
+            calculator.AddValue(Operation_Enum.Subtract, double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture));
 
             if (specialBtnPressed)
             {
@@ -204,7 +205,7 @@ namespace C__MS_Calculator
                 calculator.ClearValues();
             }
 
-            calculator.AddValue(Operation_Enum.Add, double.Parse(CalcOutputTextBox.Text));
+            calculator.AddValue(Operation_Enum.Add, double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture));
 
             if (specialBtnPressed)
             {
@@ -225,7 +226,7 @@ namespace C__MS_Calculator
             {
                 equalsPressed = true;
 
-                calculator.AddValue(Operation_Enum.None, double.Parse(CalcOutputTextBox.Text));
+                calculator.AddValue(Operation_Enum.None, double.Parse(CalcOutputTextBox.Text, CultureInfo.InvariantCulture));
 
                 if (specialBtnPressed)
                 {
