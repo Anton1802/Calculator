@@ -59,6 +59,7 @@ namespace C__MS_Calculator.Tests
             Assert.That(calculator.Calculate(), Is.EqualTo("0"));
         }
 
+        [Test]
         public void MultiplicationTest()
         {
             calculator.ClearValues();
